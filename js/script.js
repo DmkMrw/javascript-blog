@@ -40,37 +40,65 @@
 		optTitleSelector = '.post-title',
 		optTitleListSelector = '.titles';
 
-		function generateTitleLinks() {
+	// 	function generateTitleLinks() {
 
-			/* [DONE] remove contents of titleList */
-			const titleList = document.querySelector(optTitleListSelector)
-			titleList.innerHTML = '';
+	// 		/* [DONE] remove contents of titleList */
+	// 		const titleList = document.querySelector(optTitleListSelector)
+	// 		titleList.innerHTML = '';
 
-			/* [DONE] for each article */
-			const articles = document.querySelectorAll(optArticleSelector)
-			for (let article of articles) {
+	// 		/* [DONE] for each article */
+	// 		const articles = document.querySelectorAll(optArticleSelector)
+	// 		for (let article of articles) {
 
-					/* [DONE] get the article id */
-				const articleId = article.getAttribute('id')
+	// 				/* [DONE] get the article id */
+	// 			const articleId = article.getAttribute('id')
 
-				/* [DONE] find the title element */
-				const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+	// 			/* [DONE] find the title element */
+	// 			const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
-				/* [DONE] get the title from the title element */
+	// 			/* [DONE] get the title from the title element */
 
-				/* [DONE] create HTML of the link */
-				const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-				console.log(linkHTML);
+	// 			/* [DONE] create HTML of the link */
+	// 			const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+	// 			console.log(linkHTML);
 
-				/* [DONE] insert link into titleList */
-				// titleList.innerHTML = titleList.innerHTML + linkHTML;
-				titleList.insertAdjacentHTML('beforebegin', linkHTML)
+	// 			/* [DONE] insert link into titleList */
+	// 			// titleList.innerHTML = titleList.innerHTML + linkHTML;
+	// 			titleList.insertAdjacentHTML('beforebegin', linkHTML)
+	// 		}
+	// 	}
+	// generateTitleLinks();
 
-			}
+	function generateTitleLinks(){
+  /* [DONE] remove contents of titleList */
+	const titleList = document.querySelector(optTitleListSelector)
+	titleList.innerHTML = '';
 
+  /* [DONE] find all the articles and save them to variable: articles */
+  	const articles = document.querySelectorAll(optArticleSelector)
 
-		}
+  	let html = '';
 
-		generateTitleLinks();
+	for(let article of articles){
+	/* [DONE] get the article id */
+	const articleId = article.getAttribute('id')
 
+	/* [DONE] find the title element */
+	const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+
+	/* [???] get the title from the title element */
+	/* ... */
+
+	/* [DONE] create HTML of the link */
+	const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+	/* [DONE] insert link into html variable */
+		html = html + linkHTML;
+		console.log(html);
+	}
+
+  	titleList.innerHTML = html;
 }
+
+generateTitleLinks();
+}
+
