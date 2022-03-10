@@ -64,7 +64,7 @@
 
 				/* [DONE] insert link into titleList */
 				// titleList.innerHTML = titleList.innerHTML + linkHTML;
-				titleList.insertAdjacentHTML('afterend', linkHTML)
+				titleList.insertAdjacentHTML('beforebegin', linkHTML)
 
 			}
 
