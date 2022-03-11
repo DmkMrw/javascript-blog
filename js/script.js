@@ -1,6 +1,6 @@
 {
 	const titleClickHandler = function (event) {
-		event.preventDefault();
+		// event.preventDefault(); wyłączony z powodu zostawania scrollbara na dole
 		const clickedElement = this;
 
 		/* [DONE] remove class 'active' from all article links  */
@@ -27,6 +27,7 @@
 
 		/* [DONE] add class 'active' to the correct article */
 		correctArticle.classList.add('active')
+
 	}
 
 	const optArticleSelector = '.post',
@@ -58,7 +59,7 @@
 		const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 		/* [DONE] insert link into html variable */
 		html = html + linkHTML;
-	}
+		}
 
 	titleList.innerHTML = html;
 	const links = document.querySelectorAll('.titles a');
