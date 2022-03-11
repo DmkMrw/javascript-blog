@@ -50,17 +50,18 @@ body {
 
 .sidebar {
   flex: 1 0 0;
+  padding: 40px;
 }
 
 .posts {
   flex: 2 0 0;
   position: relative;
+  overflow: auto;
 }
 
 .sidebar, .posts {
   background: $color-light;
   margin-right: 10px;
-  padding: 40px;
   border: 1px solid $color-dark;
   border-radius: 5px;
 }
@@ -106,7 +107,7 @@ body {
   opacity: 0;
   transition: 0.3s;
   position: absolute;
-  width: 80%;
+  padding: 30px;
   &.active {
     opacity: 1;
     z-index: 1;
