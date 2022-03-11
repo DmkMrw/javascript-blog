@@ -34,11 +34,38 @@ body {
   text-transform: uppercase;
   font-family: $font-header;
   font-weight: 600;
-  span {
-    text-transform: none;
-    font-weight: 400;
-    color: lighten($color-dark, 20%);
+}
+
+.list {
+  li {
+    padding-bottom: 15px;
+    letter-spacing: 1.5px;
+     a {
+    text-decoration: none;
+    }
   }
+}
+
+.class-li a {
+  display: inline-block;
+  width: 100%;
+}
+
+.class-li::after {
+  display: block;
+  content: "";
+  width: 0px;
+  height: 2px;
+  background-color: #000;
+  transition: 0.3s;
+}
+
+.class-li:hover::after {
+  width: 70px;
+}
+
+.class-li:nth-of-type(n + 10):hover::after {
+  width: 80px;
 }
 
 /* Layout */

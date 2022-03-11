@@ -56,7 +56,7 @@
 		/* ... */
 
 		/* [DONE] create HTML of the link */
-		const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+		const linkHTML = '<li class="class-li"><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 		/* [DONE] insert link into html variable */
 		html = html + linkHTML;
 		}
