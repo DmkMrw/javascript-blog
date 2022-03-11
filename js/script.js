@@ -1,3 +1,4 @@
+'use strict';
 {
 	const titleClickHandler = function (event) {
 		// event.preventDefault(); wyłączony z powodu zostawania scrollbara na dole
