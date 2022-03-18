@@ -152,13 +152,9 @@
       tagLink.addEventListener('click', tagClickHandler)
       /* END LOOP: for each link */
     }
-
-
-
   }
 
   addClickListenersToTags();
 
-  generateTags();
 }
 
