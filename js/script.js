@@ -1,17 +1,23 @@
 'use strict';
 {
+  const templates = {
+    articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+    articleAuthor: Handlebars.compile(document.querySelector('#template-article-author').innerHTML),
+    articleTag: Handlebars.compile(document.querySelector('#template-article-tag').innerHTML)
+  }
+
    const opts = {
-  tagSizes: {
+    tagSizes: {
     count: 5,
     classPrefix: 'tag-size-',
-  },
-};
+    },
+  };
 
-const select = {
-  all: {
-    articles: '.post',
-    titles: '.post-title',
-    linksTo: {
+  const select = {
+    all: {
+      articles: '.post',
+      titles: '.post-title',
+      linksTo: {
       tags: 'a[href^="#tag-"]',
       authors: 'a[href^="#author-"]',
     },
@@ -83,7 +89,8 @@ const select = {
       /* ... */
 
       /* [DONE] create HTML of the link */
-      const linkHTML = '<li class="class-li"><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      const linkHTMLData = {id: articleId, title: articleTitle};
+      const linkHTML = templates.articleLink(linkHTMLData);
       /* [DONE] insert link into html variable */
       html = html + linkHTML;
     }
@@ -143,7 +150,9 @@ const select = {
       for (let tag of articleTagsArray) {
 
         /* generate HTML of the link */
-        const linkHTML = '<li class="class-li-tag"><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
+        // const linkHTML = '<li class="class-li-tag"><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
+        const linkHTMLData = {id: tag, tagName: tag};
+        const linkHTML = templates.articleTag(linkHTMLData);
 
         /* add generated code to html variable */
         html += linkHTML;
@@ -250,10 +259,11 @@ const select = {
       //     console.log(articleAuthor);
 
       /* generate HTML of the link */
-      const authorLink = '<a href="#author-' + articleAuthor + '"<span>' + articleAuthor + '<span></a>';
+      const linkHTMLData = {id: articleAuthor, authorName: articleAuthor};
+      const linkHTML = templates.articleAuthor(linkHTMLData);
 
       /* add generated code to html variable */
-      html += authorLink;
+      html += linkHTML;
       if (!allAuthors[articleAuthor]) {
         allAuthors[articleAuthor] = 1;
       } else {
