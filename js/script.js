@@ -3,7 +3,8 @@
   const templates = {
     articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
     articleAuthor: Handlebars.compile(document.querySelector('#template-article-author').innerHTML),
-    articleTag: Handlebars.compile(document.querySelector('#template-article-tag').innerHTML)
+    articleTag: Handlebars.compile(document.querySelector('#template-article-tag').innerHTML),
+    tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML)
   }
 
    const opts = {
@@ -174,22 +175,26 @@
     /* [NEW] find list of tags in right column */
     const tagList = document.querySelector(select.listOf.tags);
     const tagsParams = calculateTagsParams(allTags);
-    console.log('tagsParams:', tagsParams);
+
     /* [NEW] create variable for all links HTML code */
-    let allTagsHTML = '';
+    const allTagsData = {tags: []};
 
     /* [NEW] START LOOP: for each tag in allTags: */
     for(let tag in allTags){
     /* [NEW] generate code of a link and add it to allTagsHTML */
       // allTagsHTML += '<li><a href="#tag-' + tag + ' (' + allTags[tag] + ') ' + ' </a></li>';
-      const tagLinkHTML ='<li><a href="#tag-' +tag +'" class="' +calculateTagClass(allTags[tag], tagsParams) +'">' +tag + ' '+' </a></li>';
+      // const tagLinkHTML ='<li><a href="#tag-' +tag +'" class="' +calculateTagClass(allTags[tag], tagsParams) +'">' +tag + ' '+' </a></li>';
 
-      allTagsHTML += tagLinkHTML;
+      allTagsData.tags.push({
+      tag: tag,
+      count: allTags[tag],
+      className: calculateTagClass(allTags[tag], tagsParams)
+      });
     }
     /* [NEW] END LOOP: for each tag in allTags: */
 
     /*[NEW] add HTML from allTagsHTML to tagList */
-    tagList.innerHTML = allTagsHTML;
+    tagList.innerHTML = templates.tagCloudLink(allTagsData);
 
   };
   generateTags();
@@ -280,14 +285,7 @@
     /* [NEW] START LOOP: for each author in allAuthors */
     for (let author in allAuthors) {
       /* [NEW] generate code of a link and it to allAuthorsHTML */
-      allAuthorsHTML +=
-        '<li><a href="#author-' +
-        author +
-        '"><span>' +
-        author +
-        ' (' +
-        allAuthors[author] +
-        ')</span></a></li> ';
+    allAuthorsHTML +='<li><a href="#author-' +author +'"><span>' +author +' (' +allAuthors[author] +')</span></a></li> ';
       /* [NEW] END LOOP: for each author in allAuthors */
     }
     /* [NEW] add html from allAuthos to authorList */
