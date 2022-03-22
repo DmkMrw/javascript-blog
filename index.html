@@ -176,15 +176,18 @@
        <li class="class-li"><a href="#{{ id }}"><span>{{ title }}</span></a></li>
      </script>
 	<script id="template-article-author" type="text/x-handlebars-template">
-       <li class="list"><a href="#{{ id }}"><span>{{ authorName }}</span></a></li>
+       <li class="list"><a href="#author-{{ id }}"><span>{{ authorName }}</span></a></li>
      </script>
 	<script id="template-article-tag" type="text/x-handlebars-template">
-       <li class="class-li-tag"><a href="#{{ id }}"><span>{{ tagName }}</span></a></li>
+       <li class="class-li-tag"><a href="#tag-{{ id }}"><span>{{ tagName }}</span></a></li>
      </script>
 	<script id="template-tag-cloud-link" type="text/x-handlebars-template">
-       <li class="class-li"><a href="#{{ id }}"><span>{{ tags }}</span></a></li>
+       {{#each tags}}
+	  <li class="class-li-tag {{className}}"><a href="#tag-{{ tag }}"><span>{{ tag }}</span></a></li>
+	  {{/each}}
      </script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
 	<script src="js/script.js"></script>
 </body>
 </html>
+

@@ -79,7 +79,18 @@ body {
 /* Tags */
 
 .tags li {
-  display: inline;
+  display: inline-block;
+  // color: red;
+  // a {
+  //   color: red;
+  // }
+}
+
+a[href^="#tag-"]{
+    color: #000;
+    &:hover {
+      font-weight: bold;
+    }
 }
 
 .tag-size-1 {
